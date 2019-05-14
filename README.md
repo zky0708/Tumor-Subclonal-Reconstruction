@@ -1,2 +1,9 @@
-# tumor-subclonal-reconstruction
-Winning model of DREAM SMC-Het Challenge for characterizing intra-tumor heterogeneity by using genomic variation data
+# Subclonal reconstruction from tumor genomic variation data using a cascade ensemble model
+The repository contains the code for the winning model we developed in the [ICGC-TCGA-DREAM Somatic Mutation Calling -- Tumor Heterogeneity Challenge (SMC-Het)](https://www.synapse.org/#!Synapse:syn2813581/wiki/303137). 
+
+## Model description
+We developed a cascade ensemble model, incorporating extensive use of the genomic attributes of tumors to detect the false positives of the mutation calls and adjust the predictions of the subclones. This model consists of four sequentially connected modules. 
+1. The first gecmodule of the algorithm derives an estimate of the cellularity using the phased genotype of a tumor sample. The second and third modules predict the number of subclones and their proportions in the samples, based on a modified truncated Dirichlet process. 
+2. Specifically, the second module decomposes each sample using the somatic mutations with a deterministic ratio of variant and reference alleles and the estimated cellularity from the first module. 
+3. To reduce the effect of the false positives, the third module filters the mutations by the status of their genomic positions using the database of single nucleotide polymorphisms (dbSNP) and their base read quality and requires the positions in the genome of the matched normal samples to be variant-free. It then uses only the mutations that pass these filters, as well as the estimated number of subclones from the second module, to decompose the samples, and it corrects the predictions using the information of copy number variations. Among the resulting estimates of the three modules, the algorithm outputs the most conservative estimate of cellularity along with the corresponding characteristics of subclones and assignment of mutations. 
+4. Finally, the last module reconstructs the evolutionary relationships of these subclones using a heuristic tree building method. 
