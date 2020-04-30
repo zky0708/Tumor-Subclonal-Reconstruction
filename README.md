@@ -1,5 +1,5 @@
 # Subclonal reconstruction from tumor genomic variation data using a cascade ensemble model
-The repository contains the code for the winning model we developed in the [ICGC-TCGA-DREAM Somatic Mutation Calling -- Tumor Heterogeneity Challenge (SMC-Het)](https://www.synapse.org/#!Synapse:syn2813581/wiki/303137). The model is designed to accurately infer intra-tumor heterogeneity, including the number of subclones, cellular proportion and mutation assignment of each subclone, as well as their phylogenic relationships. 
+The repository contains the code for the winning model we developed in the [ICGC-TCGA-DREAM Somatic Mutation Calling -- Tumor Heterogeneity Challenge (SMC-Het)](https://www.synapse.org/#!Synapse:syn2813581/wiki/303137). The model is designed to accurately infer intra-tumor heterogeneity, including the number of subclones, cellular proportion and mutation assignment of each subclone, as well as their phylogenic relationships. The paper describing this Challenge has been published on [Nature Biotechnology](https://www.nature.com/articles/s41587-019-0364-z).
 
 ## Inputs and Outputs
 Input data: 
